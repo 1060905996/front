@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function *show(a){
+				alert(a);
+				let b = yield; // 第一个next执行到右边yield结束
+				yield b;		// 第二个next执行到左边yield结束
+				alert(b);	// 第三个yield执行完 
+			}
+			let generator = show(10); // 第一个参数传递
+			res1 = generator.next(5); // 第一参数无法传递
+			console.log(res1); // {value:10,done:false}
+			let res2= generator.next(6); 
+			console.log(res2); //{value: 6, done: false}
+			let res3 = generator.next();
+			console.log(res3)  //{value: undefined, done: true}
+		</script>
+	</body>
+</html>
