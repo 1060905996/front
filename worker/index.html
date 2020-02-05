@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="number"/>
+		<button type="button" id="btn">计算</button>
+		<script type="text/javascript">
+			function fib(n){
+				return n<=2?1:fib(n-1)+fib(n-2)
+			}
+			document.getElementById("btn").onclick =function(){
+				let vul = document.getElementById("number").value;
+				console.log(fib(vul))
+			};
+			// 问题: 当number大于42,需要很长时间页面卡顿
+			
+		</script>
+	</body>	
+</html>

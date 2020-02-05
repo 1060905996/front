@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" id="number"/>
+		<button type="button" id="btn">计算</button>
+		<script type="text/javascript">
+			let worker = new Worker("worker.js");
+			// postMessage 向分线程发送消息
+			
+			
+			// onmessage 接收worker发送的信息
+			worker.onmessage = function(event){
+				console.log("主线程接收分线程数据:" +event.data);
+			}
+			
+			function fib(n){
+				return n<=2?1:fib(n-1)+fib(n-2)
+			}
+			document.getElementById("btn").onclick =function(){
+				
+				let vul = document.getElementById("number").value;
+				worker.postMessage(vul);
+			};
+			
+			
+		</script>
+	</body>	
+</html>
